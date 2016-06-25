@@ -3,7 +3,6 @@ require 'rails_helper'
 describe "Webmock Test" do
   it "Mocks a web call successfully" do
     stub_request(:get, "http://www.example.com/").
-      with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
       to_return(:status => 200, :body => "abc", :headers => {})
 
     expect(HTTParty.get("http://www.example.com/").body).to eq("abc")
